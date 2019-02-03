@@ -16,7 +16,7 @@ const courseSchema = new mongoose.Schema({
         required: true,
         enum: ['web', 'mobile', 'network'],
         lowercase: true, //automtically sets property value to lowercase
-        //uppercase: true,
+        //uppercase: true, //automtically sets property value to uppercase
         trim: true
     },
     author: String,
@@ -29,7 +29,7 @@ const courseSchema = new mongoose.Schema({
                 setTimeout(() => {
                     const result = v && v.length > 0;
                     callback(result);
-                }, 4000);
+                }, 1000);
             },
             message: 'A course should have a least one tag!'
         }
@@ -147,6 +147,6 @@ async function removeCourse(id){
 }
 
 //createCourse();
-getCourses();
+//getCourses();
 //updateCourse('5c55a198e66e35083099a926');
 //removeCourse('5c55a198e66e35083099a926');
