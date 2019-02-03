@@ -147,6 +147,6 @@ async function removeCourse(id){
 }
 
 //createCourse();
-//getCourses();
+getCourses();
 //updateCourse('5c55a198e66e35083099a926');
 //removeCourse('5c55a198e66e35083099a926');
