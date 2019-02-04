@@ -39,7 +39,7 @@ const courseSchema = new mongoose.Schema({
     price: { 
         type: Number, 
         required: function() { return this.isPublished; }, //conditional function validation
-        min: 10,
+        min: 0,
         max: 200,
         get: v => Math.round(v), //called you when the you read the value of a property
         set: v => Math.round(v) //called when you set the value of a property
@@ -146,7 +146,39 @@ async function removeCourse(id){
     console.log(result);
 }
 
+
+async function createCourses() {
+    var nameList = ['Reggie', 'Mosh', 'Leon'];
+    var categoryList = ['web', 'mobile', 'network'];
+    var list = [];
+    var i;
+    for(i = 0; i < 15; i++){
+        var randomName = Math.floor(Math.random() * nameList.length);
+        var randomCategory = Math.floor(Math.random() * categoryList.length);
+        //object
+        const course = new Course({
+            name: 'Angular Course',
+            category: categoryList[randomCategory],
+            author: nameList[randomName],
+            tags: ['frontend'],
+            isPublished: true,
+            price: i
+        });
+        try {
+            const result = await course.save();//save promise
+            list.push(result);
+        }
+        catch (ex) {
+            for (field in ex.errors) {
+                console.log(ex.errors[field].message);
+            }
+        }
+    }
+    console.log(list);
+}
+
+createCourses();
 //createCourse();
-getCourses();
+//getCourses();
 //updateCourse('5c55a198e66e35083099a926');
 //removeCourse('5c55a198e66e35083099a926');
