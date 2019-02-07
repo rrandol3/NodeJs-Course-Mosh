@@ -1,4 +1,4 @@
-const { Genre, validate } = require('../models/genres');//object destructuring, gets exports from models/genres.js
+const { Genre, validate } = require('../models/genre');//object destructuring, gets exports from models/genres.js
 const express = require('express');
 const router = express.Router();
 
